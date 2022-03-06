@@ -1,0 +1,88 @@
+public class C27 {
+	public static void main(String[] args) {
+		findLowestTerms(3, 12);
+		sumOfDigits(12345);
+		findArmStrongNumber(100,500);
+		printPrime(1,100);
+		findPrimeFactors(32);
+		findSumOfOddEvenDigits(2223);
+	}
+
+	private static void findSumOfOddEvenDigits(int num) {
+		int evenSum=0,oddSum=0;
+		while(num!=0) {
+			if((num%10)%2==0)	{
+				evenSum+=(num%10);
+			}else {
+				oddSum+=(num%10);
+			}
+			num/=10;
+		}
+		System.out.println("Even Sum: "+evenSum+" Odd Sum: "+oddSum);
+	}
+
+	private static void findPrimeFactors(int num) {
+		for (int i = 2; i <= num; i++) {
+			if (num % i == 0 && checkPrime(i)) {
+					System.out.println(i);
+			}
+		}
+	}
+
+	private static void printPrime(int start, int end) {
+		while (start <= end) {
+			if (checkPrime(start)) {
+				System.out.print(start + ",");
+			}
+			start++;
+		}
+	}
+	private static boolean checkPrime(int num) {
+		int fact=0;
+		for(int i=2;i*i<=num;i++) {
+			if(num%i==0) {
+				fact++;
+				break;
+			}
+		}
+		return fact!=0?false:true;
+	}
+	private static void findArmStrongNumber(int start,int end) {
+		while (start<=end) {
+			int sum = 0;
+			int temp = start;
+			while (temp != 0) {
+				sum = sum + ((temp % 10) * (temp % 10) * (temp % 10));
+				temp = temp / 10;
+			}
+			if (sum == start) {
+				System.out.println(start);
+			} 
+			start++;
+		}
+	}
+
+	private static void sumOfDigits(int num) {
+		int sum=0;
+		while(num!=0) {
+			sum+=num%10;
+			num/=10;
+		}
+		System.out.println("Output :"+sum);
+	}
+
+	private static void findLowestTerms(int numerator, int denominator) {
+		int a,b,gcd,t;
+	    a = numerator>denominator?numerator:denominator;
+	    b = numerator>denominator?denominator:numerator;
+
+	    while (b != 0){
+	      t = b;
+	      b = a % b;
+	      a = t;
+	    }
+	    gcd = a;
+
+	    System.out.println("Lowest form = "+numerator/gcd+"/"+denominator/gcd);
+	}
+}
