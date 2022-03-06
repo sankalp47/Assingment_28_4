@@ -1,0 +1,36 @@
+public class C28 {
+	public static void main(String[] args) {
+
+//		H/W
+		System.out.println(toggleString("This is Geekster"));
+		System.out.println(reverseToggledString("my name is khan"));
+		System.out.println(replaceString("A batman with bat","bat","snow"));
+	}
+	private static String replaceString(String inputString, String toBeReplace, String replaceWith) {
+		return inputString.replace(toBeReplace, replaceWith);
+	}
+	private static String reverseToggledString(String str) {
+		String[] strArray=str.split(" ");
+		String output="";
+		for(String val:strArray) {
+			val=val.toUpperCase();
+			StringBuilder value=new StringBuilder(val).reverse();
+			value.setCharAt(0, Character.toLowerCase(value.charAt(0)));
+			output+=value.toString()+" ";
+		}
+		return output;
+	}
+
+	private static String toggleString(String str) {
+		String res="";
+		for(char ch:str.toCharArray()) {
+			if(Character.isUpperCase(ch)) {
+				ch=Character.toLowerCase(ch);
+			}else {
+				ch=Character.toUpperCase(ch);
+			}
+			res+=ch;
+		}
+		return res;
+	}
+	
